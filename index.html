@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="description" content="The Kinetic Alter Physiotherapy – MTINE-certified manual therapy, sports rehab & neuro-rehab at Jayanagar Chariali, Panjabari, Guwahati. 5.0★ rated.">
+<title>The Kinetic Alter Physiotherapy | Panjabari, Guwahati</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --blue:#0047AB;--blue-d:#003585;--blue-l:#EBF2FF;--blue-m:#1A5FBF;
+  --gold:#B8872A;--gold-l:#FDF6E8;
+  --slate:#3D4F6B;--slate-l:#8895AA;--slate-d:#1A2640;
+  --text:#111827;--muted:#6B7280;--border:#E5EAF2;
+  --off:#F7F9FC;--white:#fff;--green:#16A34A;--wa:#25D366;
+  --r:10px;--rl:16px;--rxl:22px;
+  --sh:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06);
+  --sh-lg:0 8px 32px rgba(0,71,171,.12);
+}
+body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden;font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+button{font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;border:none;outline:none;}
+img{max-width:100%;}
+input,select,textarea{font-family:'Plus Jakarta Sans',sans-serif;}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--slate-d);color:#fff;padding:10px 22px;border-radius:100px;font-size:13px;font-weight:500;opacity:0;transition:all .3s cubic-bezier(.34,1.56,.64,1);z-index:9999;pointer-events:none;white-space:nowrap;max-width:90vw;text-align:center;}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 clamp(1rem,4vw,2rem);display:flex;align-items:center;justify-content:space-between;height:64px;gap:1rem;}
+.nav-logo-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0;min-width:0;}
+.nav-logo{width:38px;height:38px;background:var(--blue);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px;font-family:'Cormorant Garamond',serif;flex-shrink:0;}
+.nav-name{min-width:0;}
+.nav-name .nn{font-size:13px;font-weight:600;color:var(--slate-d);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nav-name .ns{font-size:11px;font-weight:400;color:var(--slate-l);white-space:nowrap;}
+.nav-links{display:flex;gap:clamp(.75rem,2vw,1.75rem);list-style:none;flex-shrink:0;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--slate);cursor:pointer;transition:color .2s;white-space:nowrap;}
+.nav-links a:hover{color:var(--blue);}
+.nav-cta{background:var(--blue);color:#fff;border-radius:8px;padding:9px 18px;font-size:13px;font-weight:600;transition:all .2s;white-space:nowrap;flex-shrink:0;}
+.nav-cta:hover{background:var(--blue-d);transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;padding:6px;border-radius:8px;transition:background .2s;flex-shrink:0;width:40px;height:40px;align-items:center;}
+.hamburger:hover{background:var(--off);}
+.hamburger span{display:block;width:22px;height:2px;background:var(--slate-d);border-radius:2px;transition:all .35s cubic-bezier(.23,1,.32,1);}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+
+/* ── MOBILE MENU OVERLAY BACKDROP ── */
+.menu-backdrop{display:none;position:fixed;inset:0;top:64px;background:rgba(26,38,64,.45);z-index:198;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);animation:fadeIn .2s ease;}
+.menu-backdrop.open{display:block;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+/* ── MOBILE MENU DRAWER ── */
+.mobile-menu{
+  display:flex;
+  flex-direction:column;
+  position:fixed;
+  top:64px;left:0;right:0;
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  z-index:199;
+  padding:0;
+  gap:0;
+  box-shadow:0 16px 48px rgba(0,0,0,.15);
+  max-height:calc(100dvh - 64px);
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  transform:translateY(-110%);
+  opacity:0;
+  pointer-events:none;
+  transition:transform .3s cubic-bezier(.32,0,.67,0), opacity .25s ease;
+  visibility:hidden;
+}
+.mobile-menu.open{
+  transform:translateY(0);
+  opacity:1;
+  pointer-events:auto;
+  visibility:visible;
+  transition:transform .35s cubic-bezier(.33,1,.68,1), opacity .25s ease;
+}
+.mob-inner{padding:.75rem clamp(.875rem,4vw,1.25rem) 1.25rem;display:flex;flex-direction:column;gap:2px;}
+.mobile-menu a{padding:13px 14px;border-radius:var(--r);font-size:15px;font-weight:500;color:var(--slate-d);cursor:pointer;transition:background .15s;display:flex;align-items:center;gap:10px;line-height:1.2;}
+.mobile-menu a:active{background:var(--blue-l);}
+.mob-divider{height:1px;background:var(--border);margin:8px 0;}
+.mobile-menu .mob-cta{background:var(--blue);color:#fff;border-radius:var(--r);padding:15px 16px;font-size:15px;font-weight:600;text-align:center;margin-top:4px;cursor:pointer;transition:background .2s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.mobile-menu .mob-cta:active{background:var(--blue-d);}
+
+/* ── SECTION HELPERS ── */
+section{padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,2rem);}
+.container{max-width:1100px;margin:0 auto;}
+.tag{display:inline-flex;align-items:center;gap:6px;background:var(--blue-l);color:var(--blue);font-size:11px;font-weight:700;padding:5px 14px;border-radius:100px;letter-spacing:.07em;text-transform:uppercase;margin-bottom:.9rem;}
+h2.stitle{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4.5vw,44px);font-weight:700;color:var(--slate-d);line-height:1.1;margin-bottom:.8rem;}
+h2.stitle span{color:var(--blue);}
+p.ssub{font-size:15px;color:var(--muted);max-width:560px;line-height:1.75;}
+.alt-bg{background:var(--off);}
+.dark-bg{background:var(--slate-d);}
+
+/* ── BUTTONS ── */
+.btn-p{background:var(--blue);color:#fff;border-radius:var(--r);padding:13px 26px;font-size:15px;font-weight:600;transition:all .25s;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;}
+.btn-p:hover{background:var(--blue-d);transform:translateY(-2px);box-shadow:var(--sh-lg);}
+.btn-p:active{transform:translateY(0);}
+.btn-s{background:transparent;color:var(--blue);border:1.5px solid var(--blue);border-radius:var(--r);padding:12px 26px;font-size:15px;font-weight:600;transition:all .25s;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;}
+.btn-s:hover{background:var(--blue-l);}
+
+/* ── HERO ── */
+#hero{background:linear-gradient(135deg,#EBF2FF 0%,#F0F7FF 50%,#F7FBFF 100%);padding:clamp(3rem,8vw,5rem) clamp(1rem,4vw,2rem);}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);border-radius:100px;padding:7px 16px;font-size:12px;font-weight:500;color:var(--slate);margin-bottom:1.25rem;box-shadow:var(--sh);}
+.badge-dot{width:7px;height:7px;background:var(--green);border-radius:50%;flex-shrink:0;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(22,163,74,.4);}50%{box-shadow:0 0 0 5px rgba(22,163,74,0);}}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,56px);font-weight:700;line-height:1.08;color:var(--slate-d);margin-bottom:1.25rem;}
+.hero-title .ac{color:var(--blue);}
+.hero-title .go{color:var(--gold);}
+.hero-desc{font-size:clamp(14px,1.5vw,16px);color:var(--muted);margin-bottom:1.75rem;line-height:1.8;max-width:480px;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:2.25rem;}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.stat-card{background:#fff;border-radius:var(--r);padding:12px;border:1px solid var(--border);text-align:center;box-shadow:var(--sh);}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.5vw,26px);font-weight:700;color:var(--blue);line-height:1;}
+.stat-lbl{font-size:10px;color:var(--muted);font-weight:500;margin-top:3px;}
+.hero-visual{display:flex;flex-direction:column;gap:14px;}
+.clinic-card{background:#fff;border-radius:var(--rxl);padding:clamp(16px,3vw,24px);box-shadow:var(--sh-lg);border:1px solid var(--border);}
+.cc-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.cc-icon{width:48px;height:48px;background:var(--blue);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.cc-name{font-weight:600;font-size:14px;color:var(--slate-d);line-height:1.3;}
+.cc-sub{font-size:12px;color:var(--muted);margin-top:2px;}
+.rating-row{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
+.stars{color:#F59E0B;font-size:14px;letter-spacing:1px;}
+.rat-txt{font-size:13px;color:var(--slate);font-weight:500;}
+.verified{background:#E8F7EE;color:#166534;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;}
+.chips{display:flex;flex-wrap:wrap;gap:6px;}
+.chip{background:var(--blue-l);color:var(--blue);font-size:11px;font-weight:600;padding:4px 11px;border-radius:100px;}
+.cert-card{background:var(--blue);border-radius:var(--rl);padding:18px 20px;color:#fff;display:flex;align-items:flex-start;gap:12px;}
+.cert-icon{font-size:26px;flex-shrink:0;}
+.cert-txt .ct{font-size:14px;font-weight:600;margin-bottom:4px;}
+.cert-txt .cs{font-size:12px;opacity:.8;line-height:1.5;}
+.cert-badge{margin-left:auto;background:rgba(255,255,255,.2);border-radius:8px;padding:5px 11px;font-size:11px;font-weight:700;white-space:nowrap;flex-shrink:0;}
+
+/* ── ANATOMY ── */
+.anatomy-layout{display:grid;grid-template-columns:280px 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start;margin-top:2.5rem;}
+.body-hint{font-size:12px;color:var(--muted);text-align:center;margin-bottom:.75rem;font-weight:500;}
+.body-wrap{display:flex;flex-direction:column;align-items:center;position:sticky;top:80px;}
+.body-svg-outer{position:relative;width:100%;max-width:260px;}
+.body-svg-outer svg{width:100%;height:auto;}
+.az{cursor:pointer;transition:filter .2s;}
+.az:hover,.az.act{filter:drop-shadow(0 0 10px rgba(0,71,171,.5));}
+.zone-tabs{display:none;flex-wrap:wrap;gap:7px;margin-bottom:1.25rem;}
+.ztab{padding:9px 16px;border-radius:100px;font-size:13px;font-weight:500;border:1.5px solid var(--border);background:#fff;color:var(--slate);cursor:pointer;transition:all .2s;}
+.ztab:hover{border-color:var(--blue);color:var(--blue);}
+.ztab.act{background:var(--blue);color:#fff;border-color:var(--blue);}
+.cond-panel{background:#fff;border-radius:var(--rxl);border:1px solid var(--border);box-shadow:var(--sh);overflow:hidden;min-height:420px;}
+.ph{background:var(--blue);padding:clamp(14px,3vw,20px) clamp(16px,3vw,24px);color:#fff;}
+.ph-zone{font-size:11px;opacity:.75;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;}
+.ph-title{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.5vw,23px);font-weight:700;}
+.pb{padding:clamp(14px,3vw,20px) clamp(16px,3vw,24px);}
+.pb-intro{font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.7;}
+.cond-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.cond-item{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:var(--off);border-radius:var(--r);border-left:3px solid var(--blue);cursor:pointer;transition:all .2s;}
+.cond-item:hover{background:var(--blue-l);transform:translateX(3px);}
+.ci-icon{font-size:16px;margin-top:1px;flex-shrink:0;}
+.ci-name{font-size:13px;font-weight:600;color:var(--slate-d);margin-bottom:2px;}
+.ci-desc{font-size:12px;color:var(--muted);line-height:1.5;}
+.panel-empty{padding:clamp(30px,6vw,60px) 22px;text-align:center;}
+.pe-icon{font-size:42px;margin-bottom:10px;opacity:.3;}
+.pe-txt{font-size:15px;color:var(--muted);font-weight:500;}
+.pe-sub{font-size:13px;color:var(--muted);opacity:.65;margin-top:5px;}
+
+/* ── ROADMAP ── */
+.roadmap-inner{max-width:860px;margin:0 auto;}
+.roadmap-tl{margin-top:2.5rem;position:relative;padding-left:4px;}
+.roadmap-tl::before{content:'';position:absolute;left:26px;top:32px;bottom:32px;width:2px;background:linear-gradient(to bottom,var(--blue),rgba(0,71,171,.1));border-radius:2px;}
+.rm-step{display:flex;gap:clamp(12px,3vw,20px);margin-bottom:clamp(1rem,3vw,1.75rem);cursor:pointer;}
+.rm-node{flex-shrink:0;width:54px;height:54px;border-radius:50%;background:#fff;border:2px solid var(--blue);display:flex;align-items:center;justify-content:center;font-size:20px;transition:all .3s;box-shadow:var(--sh);z-index:1;position:relative;}
+.rm-step:hover .rm-node{background:var(--blue);transform:scale(1.05);}
+.rm-content{background:#fff;border-radius:var(--rl);padding:clamp(13px,2.5vw,18px) clamp(14px,3vw,22px);border:1px solid var(--border);flex:1;transition:all .25s;box-shadow:var(--sh);}
+.rm-step:hover .rm-content{border-color:rgba(0,71,171,.3);box-shadow:var(--sh-lg);}
+.rm-num{font-size:10px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;}
+.rm-name{font-size:clamp(14px,1.8vw,16px);font-weight:600;color:var(--slate-d);margin-bottom:5px;}
+.rm-desc{font-size:13px;color:var(--muted);line-height:1.6;}
+.rm-dur{margin-top:10px;display:inline-flex;align-items:center;gap:5px;background:var(--blue-l);color:var(--blue);font-size:11px;font-weight:700;padding:4px 12px;border-radius:100px;}
+
+/* ── SERVICES ── */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px;margin-top:2.5rem;}
+.svc-card{background:#fff;border:1px solid var(--border);border-radius:var(--rxl);padding:clamp(18px,3vw,24px);cursor:pointer;transition:all .25s;position:relative;overflow:hidden;}
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.svc-card:hover{border-color:rgba(0,71,171,.2);box-shadow:var(--sh-lg);transform:translateY(-3px);}
+.svc-card:hover::after{transform:scaleX(1);}
+.svc-icon{font-size:28px;margin-bottom:12px;}
+.svc-name{font-size:15px;font-weight:600;color:var(--slate-d);margin-bottom:7px;}
+.svc-desc{font-size:13px;color:var(--muted);line-height:1.65;}
+.svc-book{display:inline-flex;align-items:center;gap:5px;margin-top:13px;font-size:12px;font-weight:600;color:var(--blue);opacity:0;transition:opacity .2s;}
+.svc-card:hover .svc-book{opacity:1;}
+
+/* ── SEO LOCAL ── */
+.seo-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,3vw,1.75rem);margin-top:2.5rem;}
+.seo-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--rxl);padding:clamp(18px,4vw,28px);transition:background .2s;}
+.seo-card:hover{background:rgba(255,255,255,.1);}
+.seo-tag{font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;}
+.seo-title{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.5vw,22px);color:#fff;margin-bottom:10px;font-weight:700;}
+.seo-text{font-size:14px;color:rgba(255,255,255,.62);line-height:1.75;}
+.seo-kws{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px;}
+.kw-tag{background:rgba(0,71,171,.45);color:#93C5FD;font-size:11px;font-weight:600;padding:4px 12px;border-radius:100px;}
+
+/* ── STRATEGY ── */
+.strat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:2.5rem;}
+.strat-card{border:1px solid var(--border);border-radius:var(--rxl);padding:clamp(18px,3vw,24px);background:#fff;transition:all .25s;cursor:pointer;}
+.strat-card:hover{border-color:rgba(0,71,171,.25);box-shadow:var(--sh-lg);transform:translateY(-2px);}
+.strat-icon{font-size:26px;margin-bottom:12px;}
+.strat-num{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px;}
+.strat-title{font-size:15px;font-weight:600;color:var(--slate-d);margin-bottom:8px;}
+.strat-desc{font-size:13px;color:var(--muted);line-height:1.65;}
+.strat-kws{display:flex;flex-wrap:wrap;gap:5px;margin-top:11px;}
+.sk{background:var(--blue-l);color:var(--blue);font-size:10px;font-weight:600;padding:3px 9px;border-radius:100px;}
+
+/* ── PORTAL ── */
+.portal-layout{display:grid;grid-template-columns:220px 1fr;gap:clamp(1rem,3vw,1.75rem);margin-top:2.5rem;align-items:start;}
+.portal-sidebar{background:var(--slate-d);border-radius:var(--rxl);padding:clamp(16px,3vw,20px);}
+.p-av{width:48px;height:48px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:#fff;margin-bottom:8px;}
+.p-name{font-weight:600;color:#fff;font-size:14px;}
+.p-sub{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:18px;}
+.p-nav{list-style:none;display:flex;flex-direction:column;gap:2px;}
+.p-nav li{padding:9px 12px;border-radius:8px;font-size:13px;font-weight:500;color:rgba(255,255,255,.6);cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .15s;}
+.p-nav li:hover{background:rgba(255,255,255,.08);color:#fff;}
+.p-nav li.act{background:var(--blue);color:#fff;}
+.portal-main{display:flex;flex-direction:column;gap:14px;}
+.pw{background:#fff;border:1px solid var(--border);border-radius:var(--rl);padding:clamp(14px,2.5vw,20px) clamp(16px,3vw,22px);box-shadow:var(--sh);}
+.pw-title{font-size:14px;font-weight:600;color:var(--slate-d);margin-bottom:13px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.pw-title span{color:var(--muted);font-weight:400;font-size:13px;}
+.pgrid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.mstat-num{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,26px);font-weight:700;color:var(--blue);}
+.mstat-lbl{font-size:12px;color:var(--muted);margin-top:2px;}
+.pbar-wrap{height:5px;background:var(--border);border-radius:100px;overflow:hidden;margin:8px 0 4px;}
+.pbar{height:100%;background:var(--blue);border-radius:100px;transition:width .5s ease;}
+.pbar-pct{font-size:11px;color:var(--blue);font-weight:700;}
+.ex-card{display:flex;align-items:center;gap:12px;padding:11px 12px;background:var(--off);border-radius:var(--r);margin-bottom:8px;cursor:pointer;transition:all .2s;}
+.ex-card:hover{background:var(--blue-l);}
+.ex-card:last-child{margin-bottom:0;}
+.ex-thumb{width:42px;height:42px;background:var(--blue-l);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;}
+.ex-name{font-size:13px;font-weight:600;color:var(--slate-d);margin-bottom:1px;}
+.ex-meta{font-size:11px;color:var(--muted);}
+.ex-prog{margin-left:auto;text-align:right;flex-shrink:0;}
+.dot-bars{display:flex;gap:4px;margin-top:8px;}
+.dbar{flex:1;height:5px;border-radius:100px;}
+.appt-row{display:flex;align-items:center;gap:clamp(10px,2vw,14px);padding:clamp(12px,2vw,15px);background:var(--blue-l);border-radius:var(--r);flex-wrap:wrap;}
+.appt-info .ai-name{font-weight:600;color:var(--slate-d);font-size:14px;}
+.appt-info .ai-sub{font-size:12px;color:var(--muted);}
+
+/* ── REVIEWS ── */
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:16px;margin-top:2.5rem;}
+.rev-card{background:#fff;border:1px solid var(--border);border-radius:var(--rxl);padding:clamp(16px,3vw,22px);box-shadow:var(--sh);transition:all .2s;}
+.rev-card:hover{box-shadow:var(--sh-lg);transform:translateY(-2px);}
+.rev-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.rev-av{width:40px;height:40px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;flex-shrink:0;}
+.rev-name{font-size:14px;font-weight:600;color:var(--slate-d);}
+.rev-src{font-size:11px;color:var(--muted);}
+.rev-stars{color:#F59E0B;font-size:13px;margin-bottom:8px;letter-spacing:1px;}
+.rev-text{font-size:13px;color:var(--muted);line-height:1.75;font-style:italic;}
+
+/* ── SITEMAP ── */
+.sm-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,3vw,1.5rem);margin-top:2rem;}
+.sm-col-title{font-size:11px;font-weight:700;color:var(--slate-d);margin-bottom:10px;text-transform:uppercase;letter-spacing:.08em;}
+.sm-nodes{display:flex;flex-direction:column;gap:6px;}
+.sm-node{display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;font-size:13px;font-weight:500;color:var(--slate-d);cursor:pointer;transition:all .2s;}
+.sm-node:hover{border-color:rgba(0,71,171,.3);color:var(--blue);transform:translateX(3px);}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,3.5rem);margin-top:2.5rem;align-items:start;}
+.info-stack{display:flex;flex-direction:column;gap:clamp(14px,2.5vw,20px);}
+.info-item{display:flex;align-items:flex-start;gap:13px;}
+.info-icon{width:42px;height:42px;background:var(--blue-l);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+.info-lbl{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px;}
+.info-val{font-size:15px;font-weight:600;color:var(--slate-d);line-height:1.3;}
+.info-sub{font-size:12px;color:var(--muted);margin-top:2px;}
+.cf{background:#fff;border-radius:var(--rxl);padding:clamp(20px,4vw,28px);border:1px solid var(--border);box-shadow:var(--sh);}
+.cf-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--slate-d);margin-bottom:18px;}
+.fg{margin-bottom:13px;}
+.fl{font-size:12px;font-weight:600;color:var(--slate);margin-bottom:5px;display:block;}
+.fi{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;color:var(--text);background:#fff;outline:none;transition:border-color .2s;-webkit-appearance:none;}
+.fi:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,71,171,.08);}
+select.fi{cursor:pointer;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+.fsub{width:100%;padding:14px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:600;transition:all .2s;margin-top:4px;letter-spacing:.01em;}
+.fsub:hover{background:var(--blue-d);transform:translateY(-1px);}
+.f-note{font-size:12px;color:var(--muted);text-align:center;margin-top:9px;}
+.wa-conf{background:#ECFDF5;border:1px solid #A7F3D0;border-radius:var(--r);padding:13px 16px;display:flex;align-items:center;gap:10px;margin-top:14px;display:none;}
+.wa-conf.show{display:flex;}
+.wac-txt{font-size:14px;font-weight:600;color:#065F46;}
+.wac-sub{font-size:12px;color:#064E3B;}
+
+/* ── FOOTER ── */
+footer{background:var(--slate-d);padding:clamp(2.5rem,5vw,4rem) clamp(1rem,4vw,2rem) clamp(1.25rem,3vw,1.75rem);}
+.ft{max-width:1100px;margin:0 auto;}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:clamp(1.5rem,4vw,3rem);margin-bottom:2.5rem;}
+.ft-logo{display:flex;align-items:center;gap:10px;margin-bottom:13px;}
+.ft-li{width:36px;height:36px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:16px;flex-shrink:0;}
+.ft-ln{color:#fff;font-weight:600;font-size:14px;}
+.ft-desc{font-size:13px;color:rgba(255,255,255,.45);line-height:1.75;max-width:280px;}
+.ft-col-t{font-size:11px;font-weight:700;color:rgba(255,255,255,.5);margin-bottom:14px;text-transform:uppercase;letter-spacing:.1em;}
+.ft-links{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.ft-links a{font-size:13px;color:rgba(255,255,255,.45);cursor:pointer;transition:color .2s;display:block;}
+.ft-links a:hover{color:#fff;}
+.ft-bot{border-top:1px solid rgba(255,255,255,.07);padding-top:1.25rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.ft-copy{font-size:12px;color:rgba(255,255,255,.25);}
+
+/* ── WHATSAPP ── */
+.wa-btn{position:fixed;bottom:clamp(16px,4vw,28px);right:clamp(16px,4vw,28px);width:58px;height:58px;background:var(--wa);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:9000;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:all .3s;animation:wapulse 3s infinite;}
+.wa-btn:hover{transform:scale(1.1);box-shadow:0 8px 30px rgba(37,211,102,.6);}
+.wa-tt{position:absolute;right:70px;top:50%;transform:translateY(-50%);background:var(--slate-d);color:#fff;font-size:12px;font-weight:600;padding:7px 14px;border-radius:100px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;}
+.wa-btn:hover .wa-tt{opacity:1;}
+@keyframes wapulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4);}50%{box-shadow:0 6px 30px rgba(37,211,102,.5),0 0 0 10px rgba(37,211,102,.08);}}
+
+/* ── RESPONSIVE BREAKPOINTS ── */
+@media(max-width:1024px){
+  .anatomy-layout{grid-template-columns:240px 1fr;}
+}
+
+@media(max-width:900px){
+  .nav-links,.nav-cta{display:none;}
+  .hamburger{display:flex;}
+  .hero-inner{grid-template-columns:1fr;gap:1.75rem;}
+  .hero-visual{order:-1;}
+  .hero-stats{grid-template-columns:repeat(4,1fr);gap:.75rem;}
+  .hero-badge{font-size:11px;padding:6px 13px;max-width:100%;white-space:normal;text-align:left;}
+  .anatomy-layout{grid-template-columns:1fr;}
+  .zone-tabs{display:flex;}
+  .body-wrap{display:none;}
+  .strat-grid{grid-template-columns:1fr 1fr;}
+  .seo-grid{grid-template-columns:1fr 1fr;}
+  .portal-layout{grid-template-columns:1fr;}
+  .portal-sidebar{display:grid;grid-template-columns:auto 1fr;column-gap:14px;row-gap:0;}
+  .p-av{grid-row:span 2;}
+  .p-name{margin-bottom:2px;align-self:end;}
+  .p-sub{margin-bottom:0;align-self:start;}
+  .p-nav{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;margin-top:12px;}
+  .pgrid2{grid-template-columns:1fr 1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  .frow{grid-template-columns:1fr 1fr;}
+  .sm-grid{grid-template-columns:1fr 1fr;}
+  .ft-top{grid-template-columns:1fr 1fr;gap:2rem;}
+  .ft-top>div:first-child{grid-column:1/-1;}
+}
+
+@media(max-width:640px){
+  section{padding:2.25rem .875rem;}
+  #hero{padding:2rem .875rem 2.5rem;}
+  .hero-title{font-size:clamp(26px,8vw,32px);}
+  .hero-stats{grid-template-columns:repeat(2,1fr);gap:.625rem;}
+  .stat-card{padding:10px 8px;}
+  .stat-num{font-size:20px;}
+  .stat-lbl{font-size:10px;}
+  .hero-btns{flex-direction:column;gap:10px;}
+  .btn-p,.btn-s{justify-content:center;width:100%;padding:13px 20px;}
+  .hero-desc{font-size:14px;}
+  .clinic-card{padding:14px;}
+  .cc-icon{width:40px;height:40px;font-size:18px;}
+  .cert-card{padding:14px 16px;}
+  .cert-icon{font-size:22px;}
+  .strat-grid{grid-template-columns:1fr;}
+  .seo-grid{grid-template-columns:1fr;}
+  .svc-grid{grid-template-columns:1fr;}
+  .rev-grid{grid-template-columns:1fr;}
+  .sm-grid{grid-template-columns:1fr;}
+  .frow{grid-template-columns:1fr;}
+  .pgrid2{grid-template-columns:1fr 1fr;gap:10px;}
+  .ft-top{grid-template-columns:1fr;}
+  .portal-sidebar{grid-template-columns:auto 1fr;}
+  .appt-row{flex-direction:column;align-items:flex-start;gap:10px;}
+  .appt-row .btn-p{width:100%;justify-content:center;}
+  .cert-card{flex-wrap:wrap;}
+  .cert-badge{margin-left:0;}
+  .rm-node{width:44px;height:44px;font-size:17px;}
+  .roadmap-tl::before{left:21px;}
+  .chips{gap:5px;}
+  .chip{font-size:10px;padding:3px 9px;}
+  .cf{padding:18px 14px;}
+  .cond-panel{min-height:360px;}
+}
+
+@media(max-width:480px){
+  .pgrid2{grid-template-columns:1fr 1fr;}
+  .hero-stats{grid-template-columns:repeat(2,1fr);}
+  .svc-grid{grid-template-columns:1fr;}
+  .zone-tabs{gap:6px;}
+  .ztab{font-size:12px;padding:7px 12px;}
+  .rm-step{gap:10px;}
+  .rm-content{padding:12px 14px;}
+  .rm-name{font-size:14px;}
+  h2.stitle{font-size:clamp(24px,7vw,30px);}
+  p.ssub{font-size:14px;}
+}
+
+@media(max-width:380px){
+  .nav-logo-wrap .nav-name .ns{display:none;}
+  .hero-stats{grid-template-columns:1fr 1fr;}
+  .hero-badge{font-size:10px;padding:5px 11px;}
+  section{padding:2rem .75rem;}
+  #hero{padding:1.75rem .75rem 2rem;}
+  .pgrid2{grid-template-columns:1fr;}
+  .ft-bot{flex-direction:column;text-align:center;}
+}
+
+/* ── ANIMATIONS ── */
+@media(prefers-reduced-motion:no-preference){
+  .svc-card,.strat-card,.rev-card,.rm-content,.sm-node{will-change:transform;}
+}
+
+/* ── FOCUS STYLES ── */
+button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:4px;}
+.fi:focus{outline:none;}
+
+/* ── PRINT ── */
+@media print{.wa-btn,.hamburger,.mobile-menu,.nav-cta{display:none!important;}section{padding:2rem 1rem;}#hero{min-height:auto;}}
+</style>
+</head>
+<body>
+
+<div id="toast"></div>
+
+<!-- NAV -->
+<nav role="navigation" aria-label="Main navigation">
+  <div class="nav-logo-wrap">
+    <div class="nav-logo" aria-hidden="true">K</div>
+    <div class="nav-name">
+      <div class="nn">The Kinetic Alter</div>
+      <div class="ns">Physiotherapy · Panjabari, Guwahati</div>
+    </div>
+  </div>
+  <ul class="nav-links" role="list">
+    <li><a onclick="goto('hero')" role="link" tabindex="0">Home</a></li>
+    <li><a onclick="goto('anatomy')" role="link" tabindex="0">Conditions</a></li>
+    <li><a onclick="goto('roadmap')" role="link" tabindex="0">Recovery</a></li>
+    <li><a onclick="goto('services')" role="link" tabindex="0">Services</a></li>
+    <li><a onclick="goto('portal')" role="link" tabindex="0">Portal</a></li>
+    <li><a onclick="goto('contact')" role="link" tabindex="0">Book</a></li>
+  </ul>
+  <button class="nav-cta" onclick="openWA()" aria-label="Book appointment via WhatsApp">📅 Book Now</button>
+  <button class="hamburger" id="ham" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU BACKDROP -->
+<div class="menu-backdrop" id="menuBackdrop" onclick="closeMenu()" aria-hidden="true"></div>
+
+<!-- MOBILE MENU DRAWER -->
+<nav class="mobile-menu" id="mobMenu" aria-label="Mobile navigation">
+  <div class="mob-inner">
+    <a onclick="goto('hero');closeMenu()">🏠 Home</a>
+    <a onclick="goto('anatomy');closeMenu()">🎯 Conditions Map</a>
+    <a onclick="goto('roadmap');closeMenu()">🗺️ Recovery Roadmap</a>
+    <a onclick="goto('services');closeMenu()">🩺 Services</a>
+    <a onclick="goto('portal');closeMenu()">🔐 Patient Portal</a>
+    <a onclick="goto('reviews');closeMenu()">⭐ Reviews</a>
+    <a onclick="goto('contact');closeMenu()">📍 Location</a>
+    <div class="mob-divider"></div>
+    <a class="mob-cta" onclick="openWA();closeMenu()">💬 Book via WhatsApp</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" aria-label="Hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span class="badge-dot" aria-hidden="true"></span>Accepting New Patients — Jayanagar Chariali, Guwahati</div>
+      <h1 class="hero-title">Guwahati's Most<br><span class="ac">Advanced</span><br>Physiotherapy <span class="go">Hub</span></h1>
+      <p class="hero-desc">Expert manual therapy, sports rehabilitation &amp; neuro-rehab — certified by the Manual Therapy Institute of North-East. 5.0★ rated across 21 verified reviews.</p>
+      <div class="hero-btns">
+        <button class="btn-p" onclick="openWA()">📅 Book Appointment</button>
+        <button class="btn-s" onclick="goto('anatomy')">Explore Conditions →</button>
+      </div>
+      <div class="hero-stats" role="list" aria-label="Clinic highlights">
+        <div class="stat-card" role="listitem"><div class="stat-num">5.0</div><div class="stat-lbl">★ Rating</div></div>
+        <div class="stat-card" role="listitem"><div class="stat-num">21+</div><div class="stat-lbl">Reviews</div></div>
+        <div class="stat-card" role="listitem"><div class="stat-num">18+</div><div class="stat-lbl">Services</div></div>
+        <div class="stat-card" role="listitem"><div class="stat-num">MTINE</div><div class="stat-lbl">Certified</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="clinic-card">
+        <div class="cc-head">
+          <div class="cc-icon" aria-hidden="true">🏥</div>
+          <div>
+            <div class="cc-name">The Kinetic Alter Physiotherapy</div>
+            <div class="cc-sub">Opposite Bharat Petroleum · Jayanagar Chariali</div>
+          </div>
+        </div>
+        <div class="rating-row">
+          <span class="stars" aria-label="5 stars">★★★★★</span>
+          <span class="rat-txt">5.0 · 21 reviews</span>
+          <span class="verified">✓ Claimed</span>
+        </div>
+        <div class="chips" role="list" aria-label="Specialties">
+          <span class="chip" role="listitem">Manual Therapy</span>
+          <span class="chip" role="listitem">Sports Rehab</span>
+          <span class="chip" role="listitem">ACL Recovery</span>
+          <span class="chip" role="listitem">Neuro Rehab</span>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon" aria-hidden="true">🏆</div>
+        <div class="cert-txt">
+          <div class="ct">MTINE Certified Practitioner</div>
+          <div class="cs">Peripheral Joint Mobilization · IASTM · Manual Therapy · Dec 2024</div>
+        </div>
+        <div class="cert-badge">18 hrs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANATOMY -->
+<section id="anatomy" class="alt-bg" aria-labelledby="anatomy-title">
+  <div class="container">
+    <div class="tag">🎯 Interactive Conditions Map</div>
+    <h2 class="stitle" id="anatomy-title">Where is your <span>pain?</span></h2>
+    <p class="ssub">Click on any body region to discover conditions we treat and how our certified approach helps you recover.</p>
+    <div class="zone-tabs" id="zoneTabs" role="tablist" aria-label="Body regions" style="margin-top:1.5rem;">
+      <button class="ztab" role="tab" onclick="selectZone('neck',this)" aria-label="Neck conditions">Neck</button>
+      <button class="ztab" role="tab" onclick="selectZone('shoulder',this)" aria-label="Shoulder conditions">Shoulder</button>
+      <button class="ztab" role="tab" onclick="selectZone('back',this)" aria-label="Back conditions">Back</button>
+      <button class="ztab" role="tab" onclick="selectZone('hip',this)" aria-label="Hip conditions">Hip</button>
+      <button class="ztab" role="tab" onclick="selectZone('knee',this)" aria-label="Knee conditions">Knee</button>
+      <button class="ztab" role="tab" onclick="selectZone('ankle',this)" aria-label="Ankle conditions">Ankle</button>
+    </div>
+    <div class="anatomy-layout">
+      <div class="body-wrap" aria-hidden="true">
+        <div class="body-hint">👆 Click a highlighted region</div>
+        <div class="body-svg-outer">
+          <svg viewBox="0 0 280 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interactive body diagram">
+            <g class="az" onclick="selectZone('neck')" tabindex="0" role="button" aria-label="Select neck region" onkeypress="if(event.key==='Enter')selectZone('neck')">
+              <ellipse cx="140" cy="48" rx="36" ry="42" fill="#DBEAFE" stroke="#0047AB" stroke-width="2"/>
+              <circle cx="128" cy="44" r="4" fill="#93C5FD" opacity=".6"/><circle cx="152" cy="44" r="4" fill="#93C5FD" opacity=".6"/>
+              <path d="M130 58 Q140 65 150 58" fill="none" stroke="#93C5FD" stroke-width="1.5"/>
+            </g>
+            <g class="az" onclick="selectZone('neck')" tabindex="0" role="button" aria-label="Select neck region" onkeypress="if(event.key==='Enter')selectZone('neck')">
+              <rect x="126" y="86" width="28" height="22" rx="6" fill="#DBEAFE" stroke="#0047AB" stroke-width="1.5"/>
+            </g>
+            <g class="az" onclick="selectZone('shoulder')" tabindex="0" role="button" aria-label="Select shoulder region" onkeypress="if(event.key==='Enter')selectZone('shoulder')">
+              <ellipse cx="82" cy="130" rx="28" ry="22" fill="#BFDBFE" stroke="#0047AB" stroke-width="2"/>
+              <ellipse cx="198" cy="130" rx="28" ry="22" fill="#BFDBFE" stroke="#0047AB" stroke-width="2"/>
+            </g>
+            <g class="az" onclick="selectZone('back')" tabindex="0" role="button" aria-label="Select back region" onkeypress="if(event.key==='Enter')selectZone('back')">
+              <rect x="104" y="108" width="72" height="130" rx="14" fill="#DBEAFE" stroke="#0047AB" stroke-width="2"/>
+              <line x1="140" y1="118" x2="140" y2="230" stroke="#93C5FD" stroke-width="2" stroke-dasharray="4,3"/>
+            </g>
+            <rect x="58" y="148" width="26" height="72" rx="10" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.5"/>
+            <rect x="196" y="148" width="26" height="72" rx="10" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.5"/>
+            <circle cx="71" cy="226" r="12" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.5"/>
+            <circle cx="209" cy="226" r="12" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.5"/>
+            <rect x="62" y="236" width="22" height="64" rx="8" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1"/>
+            <rect x="196" y="236" width="22" height="64" rx="8" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1"/>
+            <ellipse cx="73" cy="310" rx="14" ry="11" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1"/>
+            <ellipse cx="207" cy="310" rx="14" ry="11" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1"/>
+            <g class="az" onclick="selectZone('hip')" tabindex="0" role="button" aria-label="Select hip region" onkeypress="if(event.key==='Enter')selectZone('hip')">
+              <rect x="100" y="240" width="80" height="52" rx="12" fill="#BFDBFE" stroke="#0047AB" stroke-width="1.5"/>
+            </g>
+            <g class="az" onclick="selectZone('knee')" tabindex="0" role="button" aria-label="Select knee region" onkeypress="if(event.key==='Enter')selectZone('knee')">
+              <rect x="103" y="292" width="32" height="80" rx="10" fill="#BFDBFE" stroke="#0047AB" stroke-width="2"/>
+              <rect x="145" y="292" width="32" height="80" rx="10" fill="#BFDBFE" stroke="#0047AB" stroke-width="2"/>
+              <ellipse cx="119" cy="378" rx="16" ry="14" fill="#93C5FD" stroke="#0047AB" stroke-width="2.5"/>
+              <ellipse cx="161" cy="378" rx="16" ry="14" fill="#93C5FD" stroke="#0047AB" stroke-width="2.5"/>
+            </g>
+            <rect x="107" y="390" width="24" height="80" rx="8" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.5"/>
+            <rect x="149" y="390" width="24" height="80" rx="8" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.5"/>
+            <g class="az" onclick="selectZone('ankle')" tabindex="0" role="button" aria-label="Select ankle region" onkeypress="if(event.key==='Enter')selectZone('ankle')">
+              <ellipse cx="119" cy="476" rx="16" ry="10" fill="#BFDBFE" stroke="#0047AB" stroke-width="1.5"/>
+              <ellipse cx="161" cy="476" rx="16" ry="10" fill="#BFDBFE" stroke="#0047AB" stroke-width="1.5"/>
+              <ellipse cx="124" cy="492" rx="22" ry="9" fill="#93C5FD" stroke="#0047AB" stroke-width="1"/>
+              <ellipse cx="166" cy="492" rx="22" ry="9" fill="#93C5FD" stroke="#0047AB" stroke-width="1"/>
+            </g>
+            <text x="220" y="52" font-size="11" fill="#0047AB" font-weight="600" font-family="Plus Jakarta Sans,sans-serif" cursor="pointer" onclick="selectZone('neck')">Neck</text>
+            <line x1="178" y1="50" x2="216" y2="50" stroke="#0047AB" stroke-width="1" opacity=".4"/>
+            <text x="222" y="133" font-size="11" fill="#0047AB" font-weight="600" font-family="Plus Jakarta Sans,sans-serif" cursor="pointer" onclick="selectZone('shoulder')">Shoulder</text>
+            <line x1="210" y1="130" x2="220" y2="131" stroke="#0047AB" stroke-width="1" opacity=".4"/>
+            <text x="222" y="180" font-size="11" fill="#0047AB" font-weight="600" font-family="Plus Jakarta Sans,sans-serif" cursor="pointer" onclick="selectZone('back')">Back</text>
+            <line x1="176" y1="178" x2="220" y2="178" stroke="#0047AB" stroke-width="1" opacity=".4"/>
+            <text x="222" y="268" font-size="11" fill="#0047AB" font-weight="600" font-family="Plus Jakarta Sans,sans-serif" cursor="pointer" onclick="selectZone('hip')">Hip</text>
+            <line x1="180" y1="266" x2="220" y2="266" stroke="#0047AB" stroke-width="1" opacity=".4"/>
+            <text x="222" y="340" font-size="11" fill="#0047AB" font-weight="600" font-family="Plus Jakarta Sans,sans-serif" cursor="pointer" onclick="selectZone('knee')">Knee</text>
+            <line x1="177" y1="338" x2="220" y2="338" stroke="#0047AB" stroke-width="1" opacity=".4"/>
+            <text x="222" y="485" font-size="11" fill="#0047AB" font-weight="600" font-family="Plus Jakarta Sans,sans-serif" cursor="pointer" onclick="selectZone('ankle')">Ankle</text>
+            <line x1="183" y1="483" x2="220" y2="483" stroke="#0047AB" stroke-width="1" opacity=".4"/>
+          </svg>
+        </div>
+      </div>
+      <div class="cond-panel" id="condPanel" role="region" aria-live="polite" aria-label="Condition details">
+        <div class="ph" id="panelH">
+          <div class="ph-zone" id="panelZone">Select a region</div>
+          <div class="ph-title" id="panelTitle">Click a body part to begin</div>
+        </div>
+        <div class="pb" id="panelB">
+          <div class="panel-empty">
+            <div class="pe-icon" aria-hidden="true">👈</div>
+            <div class="pe-txt">Click any highlighted body region</div>
+            <div class="pe-sub">Neck · Shoulder · Back · Hip · Knee · Ankle</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap" aria-labelledby="roadmap-title">
+  <div class="roadmap-inner">
+    <div class="tag">🗺️ Your Journey</div>
+    <h2 class="stitle" id="roadmap-title">The <span>Recovery Roadmap</span></h2>
+    <p class="ssub">From first visit to full mobility — a structured, evidence-based path every patient follows.</p>
+    <div class="roadmap-tl" role="list">
+      <div class="rm-step" onclick="showToast('Book your Initial Assessment via WhatsApp!')" role="listitem">
+        <div class="rm-node" aria-hidden="true">📋</div>
+        <div class="rm-content">
+          <div class="rm-num">Step 01</div>
+          <div class="rm-name">Initial Assessment &amp; Diagnosis</div>
+          <div class="rm-desc">Comprehensive functional assessment, pain mapping, posture analysis, and range-of-motion testing. We identify root cause, not just symptoms.</div>
+          <span class="rm-dur">⏱ Session 1 · 60 min</span>
+        </div>
+      </div>
+      <div class="rm-step" onclick="showToast('Personalized plans created after your first session.')" role="listitem">
+        <div class="rm-node" aria-hidden="true">🎯</div>
+        <div class="rm-content">
+          <div class="rm-num">Step 02</div>
+          <div class="rm-name">Personalized Treatment Blueprint</div>
+          <div class="rm-desc">Custom plan combining MTINE-certified joint mobilization, IASTM, and targeted exercise prescription tailored to your condition.</div>
+          <span class="rm-dur">⏱ Day 1–2</span>
+        </div>
+      </div>
+      <div class="rm-step" onclick="showToast('Hands-on therapy sessions begin!')" role="listitem">
+        <div class="rm-node" aria-hidden="true">💪</div>
+        <div class="rm-content">
+          <div class="rm-num">Step 03</div>
+          <div class="rm-name">Active Rehabilitation Phase</div>
+          <div class="rm-desc">Progressive hands-on therapy — joint mobilization, soft tissue work, EMS, theraband exercises, and stretching protocols.</div>
+          <span class="rm-dur">⏱ Weeks 1–4</span>
+        </div>
+      </div>
+      <div class="rm-step" onclick="showToast('Sport-specific training for athletes!')" role="listitem">
+        <div class="rm-node" aria-hidden="true">🏃</div>
+        <div class="rm-content">
+          <div class="rm-num">Step 04</div>
+          <div class="rm-name">Strength &amp; Functional Training</div>
+          <div class="rm-desc">Sport-specific strengthening. ACL rehab protocols, sports performance, and return-to-sport criteria for athletes.</div>
+          <span class="rm-dur">⏱ Weeks 3–8</span>
+        </div>
+      </div>
+      <div class="rm-step" onclick="openWA()" role="listitem">
+        <div class="rm-node" aria-hidden="true">🛡️</div>
+        <div class="rm-content">
+          <div class="rm-num">Step 05</div>
+          <div class="rm-name">Prevention &amp; Long-term Wellness</div>
+          <div class="rm-desc">Home exercise program, posture education, ergonomic guidance, and ongoing monitoring. Stay injury-free for life.</div>
+          <span class="rm-dur">⏱ Ongoing · Click to book →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="alt-bg" aria-labelledby="services-title">
+  <div class="container">
+    <div class="tag">🩺 Clinical Services</div>
+    <h2 class="stitle" id="services-title">Comprehensive <span>Care</span> Under One Roof</h2>
+    <p class="ssub">18+ evidence-based services by an MTINE-certified physiotherapist — acute injury to advanced sports rehab.</p>
+    <div class="svc-grid">
+      <div class="svc-card" onclick="bookService('Manual Therapy &amp; Joint Mobilization')" role="button" tabindex="0">
+        <div class="svc-icon" aria-hidden="true">🦴</div>
+        <div class="svc-name">Manual Therapy &amp; Joint Mobilization</div>
+        <div class="svc-desc">MTINE-certified hands-on mobilization of peripheral joints with instrument-assisted soft tissue mobilization (IASTM).</div>
+        <div class="svc-book">Book this service →</div>
+      </div>
+      <div class="svc-card" onclick="bookService('Sports Rehabilitation')" role="button" tabindex="0">
+        <div class="svc-icon" aria-hidden="true">⚽</div>
+        <div class="svc-name">Advanced Sports Rehabilitation</div>
+        <div class="svc-desc">ACL recovery, sports injury assessment &amp; prevention, return-to-sport protocols for all athletes.</div>
+        <div class="svc-book">Book this service →</div>
+      </div>
+      <div class="svc-card" onclick="bookService('Neuro Rehabilitation')" role="button" tabindex="0">
+        <div class="svc-icon" aria-hidden="true">🧠</div>
+        <div class="svc-name">Advanced Neuro Rehabilitation</div>
+        <div class="svc-desc">Specialized neurological rehabilitation for stroke recovery, movement re-education, and neurological conditions.</div>
+        <div class="svc-book">Book this service →</div>
+      </div>
+      <div class="svc-card" onclick="bookService('Electrotherapy / EMS')" role="button" tabindex="0">
+        <div class="svc-icon" aria-hidden="true">⚡</div>
+        <div class="svc-name">Electrotherapy (EMS)</div>
+        <div class="svc-desc">Electrical Muscle Stimulator therapy for pain relief, muscle re-education, and accelerated tissue healing.</div>
+        <div class="svc-book">Book this service →</div>
+      </div>
+      <div class="svc-card" onclick="bookService('Soft Tissue Massage')" role="button" tabindex="0">
+        <div class="svc-icon" aria-hidden="true">🤲</div>
+        <div class="svc-name">Remedial Soft Tissue Massage</div>
+        <div class="svc-desc">Deep tissue massage targeting trigger points, reducing muscle tension, improving circulation for faster recovery.</div>
+        <div class="svc-book">Book this service →</div>
+      </div>
+      <div class="svc-card" onclick="bookService('Arthritis &amp; Joint Care')" role="button" tabindex="0">
+        <div class="svc-icon" aria-hidden="true">🦵</div>
+        <div class="svc-name">Arthritis &amp; Joint Care</div>
+        <div class="svc-desc">Ankylosing spondylitis rehab, osteoarthritis management, trigger finger treatment, comprehensive joint care.</div>
+        <div class="svc-book">Book this service →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEO LOCAL -->
+<section id="seo-local" class="dark-bg" aria-labelledby="seo-title">
+  <div class="container">
+    <div class="tag" style="background:rgba(184,135,42,.15);color:#E5B86D;">📍 Serving Guwahati</div>
+    <h2 class="stitle" id="seo-title" style="color:#fff;">Expert Physiotherapy in <span style="color:#E5B86D;">Panjabari &amp; Guwahati</span></h2>
+    <div class="seo-grid">
+      <div class="seo-card">
+        <div class="seo-tag">🏙️ Local Expertise</div>
+        <div class="seo-title">Physiotherapy in Panjabari, Guwahati</div>
+        <div class="seo-text">Located at Jayanagar Chariali, opposite Bharat Petroleum — Panjabari's most advanced physiotherapy clinic. Serving Panjabari, Zoo Road, Beltola, and surrounding areas with evidence-based physical therapy.</div>
+        <div class="seo-kws">
+          <span class="kw-tag">Physiotherapy Panjabari</span>
+          <span class="kw-tag">Physio Clinic Guwahati</span>
+          <span class="kw-tag">Jayanagar Chariali</span>
+        </div>
+        <button class="btn-p" onclick="openWA()" style="margin-top:1.25rem;font-size:13px;padding:10px 20px;">Book Appointment →</button>
+      </div>
+      <div class="seo-card">
+        <div class="seo-tag">🏆 Sports Medicine</div>
+        <div class="seo-title">Sports Injury Rehab in Guwahati</div>
+        <div class="seo-text">Guwahati's trusted destination for sports injury rehab. ACL recovery, ankle sprains, shoulder impingement, and return-to-sport programs for football, cricket, badminton athletes. MTINE-certified.</div>
+        <div class="seo-kws">
+          <span class="kw-tag">Sports Physio Guwahati</span>
+          <span class="kw-tag">ACL Rehab Assam</span>
+          <span class="kw-tag">Sports Injury Clinic</span>
+        </div>
+        <button class="btn-p" onclick="openWA()" style="margin-top:1.25rem;font-size:13px;padding:10px 20px;">Book Sports Consult →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT STRATEGY -->
+<section id="strategy" aria-labelledby="strategy-title">
+  <div class="container">
+    <div class="tag">📈 SEO Content Strategy</div>
+    <h2 class="stitle" id="strategy-title">Rank <span>#1 on Google</span> in Guwahati</h2>
+    <p class="ssub">High-impact content pillars to dominate local search and establish authority across Assam.</p>
+    <div class="strat-grid">
+      <div class="strat-card" onclick="showToast('Create dedicated city + condition pages for top Google rankings!')">
+        <div class="strat-icon" aria-hidden="true">📝</div>
+        <div class="strat-num">Priority 1</div>
+        <div class="strat-title">Local Landing Pages</div>
+        <div class="strat-desc">Dedicated pages for "Physiotherapy Panjabari", "Knee Pain Guwahati", "Back Pain Specialist Assam" — 800+ words, structured data, Google Maps embed.</div>
+        <div class="strat-kws"><span class="sk">physiotherapist near me</span><span class="sk">physio Guwahati</span></div>
+      </div>
+      <div class="strat-card" onclick="showToast('Weekly blog posts build topical authority and attract patients!')">
+        <div class="strat-icon" aria-hidden="true">🎥</div>
+        <div class="strat-num">Priority 2</div>
+        <div class="strat-title">Patient Education Blog</div>
+        <div class="strat-desc">Weekly articles: "5 Exercises for Knee Pain", "ACL Injury Signs", "Neck Pain Home Remedies Assam" — targeting long-tail searches.</div>
+        <div class="strat-kws"><span class="sk">knee pain exercises</span><span class="sk">physiotherapy tips</span></div>
+      </div>
+      <div class="strat-card" onclick="showToast('Target 50+ reviews in 6 months with a QR code review funnel!')">
+        <div class="strat-icon" aria-hidden="true">⭐</div>
+        <div class="strat-num">Priority 3</div>
+        <div class="strat-title">Google Review Funnel</div>
+        <div class="strat-desc">QR code at clinic → review page. Target 50+ reviews in 6 months. Each response optimized with local keywords.</div>
+        <div class="strat-kws"><span class="sk">5-star reviews</span><span class="sk">Google My Business</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PATIENT PORTAL -->
+<section id="portal" class="alt-bg" aria-labelledby="portal-title">
+  <div class="container">
+    <div class="tag">🔐 Patient Portal — Concept UI</div>
+    <h2 class="stitle" id="portal-title">Your Personal <span>Recovery Dashboard</span></h2>
+    <p class="ssub">A secure portal where patients track exercises, monitor progress, and communicate with their physiotherapist.</p>
+    <div class="portal-layout">
+      <div class="portal-sidebar" role="navigation" aria-label="Portal navigation">
+        <div class="p-av" aria-hidden="true">FA</div>
+        <div class="p-name">Fardeen Afridi</div>
+        <div class="p-sub">Patient since Dec 2024</div>
+        <ul class="p-nav" role="list">
+          <li class="act" onclick="setPortalTab(this,'dashboard')" role="listitem" tabindex="0">🏠 Dashboard</li>
+          <li onclick="setPortalTab(this,'exercises')" role="listitem" tabindex="0">💪 My Exercises</li>
+          <li onclick="setPortalTab(this,'appointments')" role="listitem" tabindex="0">📅 Appointments</li>
+          <li onclick="setPortalTab(this,'progress')" role="listitem" tabindex="0">📊 Progress</li>
+          <li onclick="setPortalTab(this,'messages')" role="listitem" tabindex="0">💬 Messages</li>
+        </ul>
+      </div>
+      <div class="portal-main" id="portalMain" role="main">
+        <div class="pgrid2">
+          <div class="pw">
+            <div class="mstat-num">Day 12</div>
+            <div class="mstat-lbl">of Recovery Plan</div>
+            <div class="pbar-wrap"><div class="pbar" style="width:40%"></div></div>
+            <div class="pbar-pct">40% Complete</div>
+          </div>
+          <div class="pw">
+            <div class="mstat-num">4/5</div>
+            <div class="mstat-lbl">Exercises done today</div>
+            <div class="dot-bars" style="margin-top:9px;" aria-label="Exercise completion">
+              <div class="dbar" style="background:var(--blue)" aria-hidden="true"></div>
+              <div class="dbar" style="background:var(--blue)" aria-hidden="true"></div>
+              <div class="dbar" style="background:var(--blue)" aria-hidden="true"></div>
+              <div class="dbar" style="background:var(--blue)" aria-hidden="true"></div>
+              <div class="dbar" style="background:var(--border)" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+        <div class="pw">
+          <div class="pw-title">Today's Exercise Plan <span>· Knee Rehab Protocol</span></div>
+          <div class="ex-card" onclick="toggleExercise(this,'Quad Sets')" role="button" tabindex="0">
+            <div class="ex-thumb" aria-hidden="true">🦵</div>
+            <div><div class="ex-name">Quad Sets (Isometric)</div><div class="ex-meta">3 sets × 15 reps · 5 sec hold</div></div>
+            <div class="ex-prog">
+              <div class="pbar-wrap" style="width:72px;"><div class="pbar" style="width:100%"></div></div>
+              <div class="pbar-pct">✓ Done</div>
+            </div>
+          </div>
+          <div class="ex-card" onclick="toggleExercise(this,'Theraband Leg Press')" role="button" tabindex="0">
+            <div class="ex-thumb" aria-hidden="true">🏋️</div>
+            <div><div class="ex-name">Theraband Leg Press</div><div class="ex-meta">3 sets × 12 reps</div></div>
+            <div class="ex-prog">
+              <div class="pbar-wrap" style="width:72px;"><div class="pbar" style="width:65%"></div></div>
+              <div class="pbar-pct">65%</div>
+            </div>
+          </div>
+          <div class="ex-card" onclick="toggleExercise(this,'Hamstring Stretch')" role="button" tabindex="0">
+            <div class="ex-thumb" aria-hidden="true">🧘</div>
+            <div><div class="ex-name">Hamstring Stretch</div><div class="ex-meta">3 holds × 30 sec</div></div>
+            <div class="ex-prog">
+              <div class="pbar-wrap" style="width:72px;"><div class="pbar" style="width:0%"></div></div>
+              <div class="pbar-pct">Pending</div>
+            </div>
+          </div>
+        </div>
+        <div class="pw">
+          <div class="pw-title">Next Appointment</div>
+          <div class="appt-row">
+            <div style="font-size:26px;" aria-hidden="true">📅</div>
+            <div class="appt-info">
+              <div class="ai-name">Thursday, January 16 · 11:00 AM</div>
+              <div class="ai-sub">Manual Therapy Session · Dr. P. Deka</div>
+            </div>
+            <button class="btn-p" onclick="openWA()" style="font-size:12px;padding:9px 16px;margin-left:auto;">Reschedule</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" aria-labelledby="reviews-title">
+  <div class="container">
+    <div class="tag">⭐ Patient Stories</div>
+    <h2 class="stitle" id="reviews-title">5.0 Stars — <span>Every Time</span></h2>
+    <p class="ssub">21 verified reviews from patients across Guwahati. Real recoveries, real results.</p>
+    <div class="rev-grid">
+      <div class="rev-card">
+        <div class="rev-head">
+          <div class="rev-av" aria-hidden="true">RA</div>
+          <div><div class="rev-name">Rohit Agarwal</div><div class="rev-src">Google Reviews · Guwahati</div></div>
+        </div>
+        <div class="rev-stars" aria-label="5 stars">★★★★★</div>
+        <div class="rev-text">"Recovered from my ACL injury in record time. The hands-on approach and personalized exercise plan made all the difference. Highly recommend for sports injuries."</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-head">
+          <div class="rev-av" style="background:#7C3AED;" aria-hidden="true">PD</div>
+          <div><div class="rev-name">Priya Dutta</div><div class="rev-src">Justdial · 5 Stars</div></div>
+        </div>
+        <div class="rev-stars" aria-label="5 stars">★★★★★</div>
+        <div class="rev-text">"Reasonably priced and extremely effective. My chronic back pain of 3 years improved in just 6 sessions. The physiotherapist is knowledgeable and caring."</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-head">
+          <div class="rev-av" style="background:#059669;" aria-hidden="true">MN</div>
+          <div><div class="rev-name">Manish Nath</div><div class="rev-src">Google Reviews</div></div>
+        </div>
+        <div class="rev-stars" aria-label="5 stars">★★★★★</div>
+        <div class="rev-text">"Best physiotherapy clinic in Panjabari area. Very professional setup, modern equipment, and the treatment plan was explained clearly. Full recovery achieved."</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;">
+      <button class="btn-p" onclick="openWA()">📝 Leave Your Review →</button>
+    </div>
+  </div>
+</section>
+
+<!-- SITEMAP -->
+<section id="sitemap" class="alt-bg" aria-labelledby="sitemap-title">
+  <div class="container">
+    <div class="tag">🗂️ Website Architecture</div>
+    <h2 class="stitle" id="sitemap-title">Complete <span>Site Sitemap</span></h2>
+    <p class="ssub">Full architecture for the Django REST + React SPA build, structured for maximum SEO coverage.</p>
+    <div class="sm-grid">
+      <div>
+        <div class="sm-col-title">Public Pages</div>
+        <div class="sm-nodes">
+          <div class="sm-node" onclick="showToast('/ — Home page with Hero, Features & Stats')" role="button" tabindex="0">🏠 / — Home</div>
+          <div class="sm-node" onclick="goto('anatomy')" role="button" tabindex="0">🎯 /conditions — Anatomy Map</div>
+          <div class="sm-node" onclick="goto('roadmap')" role="button" tabindex="0">🛤️ /recovery-roadmap</div>
+          <div class="sm-node" onclick="goto('services')" role="button" tabindex="0">💼 /services — All 18+ Services</div>
+          <div class="sm-node" onclick="showToast('Dedicated SEO page for local search rankings')" role="button" tabindex="0">📍 /physiotherapy-panjabari</div>
+          <div class="sm-node" onclick="showToast('Dedicated sports rehab SEO landing page')" role="button" tabindex="0">⚽ /sports-rehab-guwahati</div>
+          <div class="sm-node" onclick="goto('reviews')" role="button" tabindex="0">⭐ /testimonials</div>
+          <div class="sm-node" onclick="goto('contact')" role="button" tabindex="0">📞 /book-appointment</div>
+          <div class="sm-node" onclick="showToast('Patient education blog for SEO authority')" role="button" tabindex="0">📝 /blog</div>
+        </div>
+      </div>
+      <div>
+        <div class="sm-col-title">Patient Portal</div>
+        <div class="sm-nodes">
+          <div class="sm-node" onclick="goto('portal')" role="button" tabindex="0">🔐 /portal/login</div>
+          <div class="sm-node" onclick="goto('portal')" role="button" tabindex="0">📊 /portal/dashboard</div>
+          <div class="sm-node" onclick="goto('portal')" role="button" tabindex="0">💪 /portal/exercises</div>
+          <div class="sm-node" onclick="goto('portal')" role="button" tabindex="0">📅 /portal/appointments</div>
+          <div class="sm-node" onclick="goto('portal')" role="button" tabindex="0">📈 /portal/progress</div>
+        </div>
+        <div class="sm-col-title" style="margin-top:1.25rem;">Django REST API</div>
+        <div class="sm-nodes">
+          <div class="sm-node" onclick="showToast('GET/POST /api/appointments/ — Django REST endpoint')" role="button" tabindex="0">⚙️ /api/appointments/</div>
+          <div class="sm-node" onclick="showToast('GET/POST /api/exercises/ — Django REST endpoint')" role="button" tabindex="0">⚙️ /api/exercises/</div>
+          <div class="sm-node" onclick="showToast('GET/POST /api/patients/ — Django REST endpoint')" role="button" tabindex="0">⚙️ /api/patients/</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="tag">📞 Get in Touch</div>
+    <h2 class="stitle" id="contact-title">Book Your <span>Consultation</span></h2>
+    <p class="ssub">Same-day appointments available. Opposite Bharat Petroleum, Jayanagar Chariali, Panjabari, Guwahati.</p>
+    <div class="contact-grid">
+      <div class="info-stack">
+        <div class="info-item">
+          <div class="info-icon" aria-hidden="true">📍</div>
+          <div>
+            <div class="info-lbl">Address</div>
+            <div class="info-val">Jayanagar Chariali, Panjabari</div>
+            <div class="info-sub">Opposite Bharat Petroleum, Guwahati, Assam</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon" aria-hidden="true">📞</div>
+          <div>
+            <div class="info-lbl">Phone / WhatsApp</div>
+            <div class="info-val" style="cursor:pointer;color:var(--blue);" onclick="callClinic()">+91 84602 37330</div>
+            <div class="info-sub">Mon–Sat · 9:00 AM – 7:00 PM</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon" aria-hidden="true">⭐</div>
+          <div>
+            <div class="info-lbl">Rating</div>
+            <div class="info-val">5.0 · 21 Reviews on Justdial</div>
+            <div class="info-sub">Verified &amp; Claimed Listing</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon" aria-hidden="true">🏆</div>
+          <div>
+            <div class="info-lbl">Certification</div>
+            <div class="info-val">MTINE Certified</div>
+            <div class="info-sub">Manual Therapy Institute of North-East, Guwahati · Dec 2024</div>
+          </div>
+        </div>
+        <button class="btn-p" onclick="openWA()" style="align-self:flex-start;">💬 WhatsApp to Book</button>
+      </div>
+      <div class="cf">
+        <div class="cf-title">Request an Appointment</div>
+        <div class="frow">
+          <div class="fg"><label class="fl" for="fname">First Name</label><input class="fi" id="fname" type="text" placeholder="Rahul" autocomplete="given-name"></div>
+          <div class="fg"><label class="fl" for="lname">Last Name</label><input class="fi" id="lname" type="text" placeholder="Sharma" autocomplete="family-name"></div>
+        </div>
+        <div class="fg"><label class="fl" for="fphone">Phone Number</label><input class="fi" id="fphone" type="tel" placeholder="+91 98765 43210" autocomplete="tel"></div>
+        <div class="fg">
+          <label class="fl" for="fcond">Condition / Problem Area</label>
+          <select class="fi" id="fcond">
+            <option value="">Select your condition...</option>
+            <option>Back &amp; Spine Pain</option>
+            <option>Knee / ACL Injury</option>
+            <option>Shoulder Pain</option>
+            <option>Sports Injury</option>
+            <option>Neck Pain</option>
+            <option>Post-Surgery Rehab</option>
+            <option>Arthritis</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl" for="fdate">Preferred Date</label><input class="fi" id="fdate" type="date" autocomplete="off"></div>
+        <button class="fsub" onclick="submitForm()">Submit Appointment Request →</button>
+        <div class="wa-conf" id="waConf" role="alert">
+          <div style="font-size:20px;" aria-hidden="true">✅</div>
+          <div>
+            <div class="wac-txt">Booking sent via WhatsApp!</div>
+            <div class="wac-sub">We'll confirm within 2 hours.</div>
+          </div>
+        </div>
+        <p class="f-note" id="fNote">We'll confirm within 2 hours via WhatsApp</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="ft">
+    <div class="ft-top">
+      <div>
+        <div class="ft-logo">
+          <div class="ft-li" aria-hidden="true">K</div>
+          <div class="ft-ln">The Kinetic Alter Physiotherapy</div>
+        </div>
+        <div class="ft-desc">Guwahati's trusted physiotherapy clinic. MTINE-certified manual therapy, sports rehabilitation &amp; advanced neuro-rehab at Panjabari — evidence-based care.</div>
+      </div>
+      <div>
+        <div class="ft-col-t">Quick Links</div>
+        <ul class="ft-links">
+          <li><a onclick="goto('anatomy')" tabindex="0">Conditions Treated</a></li>
+          <li><a onclick="goto('roadmap')" tabindex="0">Recovery Roadmap</a></li>
+          <li><a onclick="goto('services')" tabindex="0">All Services</a></li>
+          <li><a onclick="goto('portal')" tabindex="0">Patient Portal</a></li>
+          <li><a onclick="goto('contact')" tabindex="0">Book Appointment</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-col-t">Contact</div>
+        <ul class="ft-links">
+          <li><a onclick="callClinic()" tabindex="0">+91 84602 37330</a></li>
+          <li><a tabindex="0">Jayanagar Chariali, Panjabari</a></li>
+          <li><a tabindex="0">Guwahati, Assam 781037</a></li>
+          <li><a tabindex="0">Mon – Sat: 9AM – 7PM</a></li>
+          <li><a onclick="openWA()" style="color:#4ADE80;" tabindex="0">💬 WhatsApp Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <div class="ft-copy">© 2025 The Kinetic Alter Physiotherapy Clinic · Guwahati, Assam</div>
+      <div class="ft-copy">Django REST + React SPA · MTINE Certified</div>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<button class="wa-btn" onclick="openWA()" aria-label="Book appointment via WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+    <path d="M14 2.3C7.5 2.3 2.3 7.5 2.3 14c0 2 .5 4 1.5 5.8L2.3 25.7l6.1-1.5c1.7.9 3.6 1.4 5.6 1.4 6.5 0 11.7-5.2 11.7-11.6C25.7 7.5 20.5 2.3 14 2.3zm6.8 16.5c-.3.8-1.5 1.5-2.1 1.6-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.3.3-.3.6-.3.8-.3h.5c.2 0 .4 0 .5.4.2.4.7 1.7.7 1.9.1.2.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.1.1-.3.3-.1.5.2.3.8 1.2 1.7 2 1.2 1 2.1 1.3 2.4 1.5.3.2.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.3.5.4.1.2.1.9-.2 1.6z" fill="white"/>
+  </svg>
+  <div class="wa-tt" aria-hidden="true">Book via WhatsApp</div>
+</button>
+
+<script>
+const conds={
+  neck:{title:'Neck & Cervical Spine',zone:'Cervical Region',intro:'Neck pain is one of our most-treated conditions. MTINE-certified manual therapy targets the root cause for lasting relief.',items:[
+    {i:'🔄',n:'Cervical Spondylosis',d:'Age-related disc wear — manual therapy + traction'},
+    {i:'⚡',n:'Cervical Radiculopathy',d:'Nerve compression causing arm pain/numbness'},
+    {i:'💢',n:'Whiplash Injury',d:'Post-accident neck trauma — soft tissue & mobilization'},
+    {i:'🤔',n:'Forward Head Posture',d:'Tech-neck — posture correction & strengthening'},
+    {i:'💆',n:'Cervicogenic Headaches',d:'Neck-origin headaches treated with manual therapy'}
+  ]},
+  shoulder:{title:'Shoulder & Upper Limb',zone:'Shoulder Joint',intro:'Shoulder conditions require precise assessment. We use MTINE-certified peripheral joint mobilization and IASTM for optimal outcomes.',items:[
+    {i:'🎯',n:'Rotator Cuff Tear',d:'Conservative rehab or post-surgical recovery protocol'},
+    {i:'🔒',n:'Frozen Shoulder',d:'Progressive joint mobilization to restore range of motion'},
+    {i:'⬆️',n:'Shoulder Impingement',d:'Subacromial pain — manual therapy + strengthening'},
+    {i:'🏏',n:"Thrower's Shoulder",d:'Cricket, badminton — sports-specific rehab program'},
+    {i:'⚡',n:'AC Joint Sprain',d:'Acromioclavicular injury management'}
+  ]},
+  back:{title:'Back & Spine',zone:'Lumbar / Thoracic Spine',intro:'Back pain is the #1 reason patients visit us. Our manual therapy + exercise approach delivers lasting results.',items:[
+    {i:'💿',n:'Disc Herniation / Slipped Disc',d:'Evidence-based conservative management'},
+    {i:'🦴',n:'Lumbar Spondylosis',d:'Degenerative spine — mobility + strengthening plan'},
+    {i:'📐',n:'Ankylosing Spondylitis',d:'Specialized AS rehab — posture & mobility focus'},
+    {i:'⚡',n:'Sciatica',d:'Sciatic nerve pain — neural mobilization & core rehab'},
+    {i:'🔧',n:'Muscle Spasm / Strain',d:'Acute back pain — soft tissue therapy + EMS'}
+  ]},
+  hip:{title:'Hip & Pelvis',zone:'Hip Joint & Pelvis',intro:'Hip conditions often present as knee or back pain. Accurate assessment is key — our detailed evaluation finds the true source.',items:[
+    {i:'🦴',n:'Hip Osteoarthritis',d:'Joint preservation — gait retraining & strengthening'},
+    {i:'🏃',n:'IT Band Syndrome',d:"Runner's hip — IASTM + biomechanical correction"},
+    {i:'⚡',n:'Hip Flexor Strain',d:'Common in footballers — manual therapy + stretching'},
+    {i:'🔄',n:'Piriformis Syndrome',d:'Deep hip muscle dysfunction mimicking sciatica'},
+    {i:'🤸',n:'Pelvic Instability',d:'Core stability & pelvic floor rehabilitation'}
+  ]},
+  knee:{title:'Knee Joint',zone:'Knee & Patella',intro:"ACL injuries, Runner's Knee, post-surgical rehab — the knee is our specialty. MTINE-certified mobilization for faster, safer recovery.",items:[
+    {i:'🏆',n:'ACL Reconstruction Rehab',d:'Full 6-phase return-to-sport protocol'},
+    {i:'🎯',n:"Patellofemoral Pain (Runner's Knee)",d:'Patellar taping + VMO strengthening'},
+    {i:'🦵',n:'Meniscus Injury',d:'Conservative management or post-op rehab'},
+    {i:'🔄',n:'Knee Osteoarthritis',d:'Theraband exercises + manual therapy for pain relief'},
+    {i:'⚡',n:'Patellar Tendinopathy',d:"Jumper's Knee — eccentric loading protocol"}
+  ]},
+  ankle:{title:'Ankle & Foot',zone:'Ankle, Foot & Toes',intro:'Ankle sprains are underestimated injuries. Inadequate rehab leads to chronic instability — we treat it right the first time.',items:[
+    {i:'🔄',n:'Ankle Sprain Rehabilitation',d:'Graded balance & proprioception training'},
+    {i:'🦶',n:'Plantar Fasciitis',d:'Heel pain — myofascial release + orthotics advice'},
+    {i:'⚡',n:'Achilles Tendinopathy',d:'Eccentric heel-drop protocol — evidence-based'},
+    {i:'☝️',n:'Trigger Finger',d:'Manual therapy & joint mobilization for finger joints'},
+    {i:'⚽',n:'Sports Ankle Injuries',d:'Football, badminton — rapid return-to-sport protocols'}
+  ]}
+};
+
+function selectZone(z,tabEl){
+  const d=conds[z];if(!d)return;
+  document.getElementById('panelZone').textContent=d.zone;
+  document.getElementById('panelTitle').textContent=d.title;
+  document.getElementById('panelB').innerHTML=`
+    <p class="pb-intro">${d.intro}</p>
+    <ul class="cond-list" role="list">
+      ${d.items.map(it=>`<li class="cond-item" onclick="bookService('${it.n}')" role="button" tabindex="0"><span class="ci-icon" aria-hidden="true">${it.i}</span><div><div class="ci-name">${it.n}</div><div class="ci-desc">${it.d}</div></div></li>`).join('')}
+    </ul>
+    <button class="btn-p" onclick="openWA()" style="margin-top:1rem;width:100%;justify-content:center;">Book Treatment for ${d.title} →</button>
+  `;
+  document.querySelectorAll('.az').forEach(el=>el.classList.remove('act'));
+  document.querySelectorAll('.ztab').forEach(t=>t.classList.remove('act'));
+  if(tabEl)tabEl.classList.add('act');
+  else document.querySelectorAll('.ztab').forEach(t=>{if(t.textContent.toLowerCase().includes(z.substring(0,4)))t.classList.add('act');});
+}
+
+function goto(id){
+  const el=document.getElementById(id);
+  if(el){
+    const navH=64;
+    const top=el.getBoundingClientRect().top+window.pageYOffset-navH-12;
+    window.scrollTo({top,behavior:'smooth'});
+  }
+  closeMenu();
+}
+
+function openWA(){
+  const msg=encodeURIComponent("Hello! I'd like to book an appointment at The Kinetic Alter Physiotherapy Clinic, Panjabari, Guwahati. Please let me know your available slots.");
+  window.open('https://wa.me/918460237330?text='+msg,'_blank');
+}
+
+function callClinic(){window.open('tel:+918460237330');}
+
+function bookService(name){
+  const msg=encodeURIComponent(`Hello! I'd like to book a session for: ${name} at The Kinetic Alter Physiotherapy Clinic, Panjabari. Please let me know your available slots.`);
+  window.open('https://wa.me/918460237330?text='+msg,'_blank');
+}
+
+function toggleMenu(){
+  const h=document.getElementById('ham');
+  const m=document.getElementById('mobMenu');
+  const b=document.getElementById('menuBackdrop');
+  const open=!m.classList.contains('open');
+  m.classList.toggle('open',open);
+  if(b)b.classList.toggle('open',open);
+  h.classList.toggle('open',open);
+  h.setAttribute('aria-expanded',String(open));
+  document.body.style.overflow=open?'hidden':'';
+}
+
+function closeMenu(){
+  document.getElementById('ham').classList.remove('open');
+  document.getElementById('ham').setAttribute('aria-expanded','false');
+  document.getElementById('mobMenu').classList.remove('open');
+  const b=document.getElementById('menuBackdrop');
+  if(b)b.classList.remove('open');
+  document.body.style.overflow='';
+}
+
+// Close menu on ESC
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'&&document.getElementById('mobMenu').classList.contains('open'))closeMenu();
+});
+
+let toastTimer;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+function setPortalTab(li,tab){
+  document.querySelectorAll('.p-nav li').forEach(l=>l.classList.remove('act'));
+  li.classList.add('act');
+  showToast('Portal tab: '+tab+' — connect Django REST API for real data');
+}
+
+function toggleExercise(card,name){
+  const pbar=card.querySelector('.pbar');
+  const pct=card.querySelector('.pbar-pct');
+  if(pct.textContent==='Pending'||pct.textContent==='65%'){
+    pbar.style.width='100%';
+    pct.textContent='✓ Done';
+    showToast(name+' marked as complete! 💪');
+  }else{
+    showToast(name+' already completed. Great work!');
+  }
+}
+
+function submitForm(){
+  const fn=document.getElementById('fname').value.trim();
+  const ph=document.getElementById('fphone').value.trim();
+  const cond=document.getElementById('fcond').value;
+  const dt=document.getElementById('fdate').value;
+  if(!fn){showToast('Please enter your first name');return;}
+  if(!ph){showToast('Please enter your phone number');return;}
+  if(!cond){showToast('Please select your condition');return;}
+  const msg=encodeURIComponent(`Hello! Appointment Request:\nName: ${fn} ${document.getElementById('lname').value}\nPhone: ${ph}\nCondition: ${cond}\nPreferred Date: ${dt||'Flexible'}\n\nPlease confirm my slot.`);
+  document.getElementById('waConf').classList.add('show');
+  document.getElementById('fNote').style.display='none';
+  window.open('https://wa.me/918460237330?text='+msg,'_blank');
+}
+
+// Set min date for date input
+(function(){
+  const di=document.getElementById('fdate');
+  if(di){const t=new Date();t.setDate(t.getDate()+1);di.min=t.toISOString().split('T')[0];}
+})();
+</script>
+</body>
+</html>
